@@ -1,6 +1,11 @@
-<h1>Editing Hero</h1>
-
-<%= render 'form', hero: @hero %>
+<div class='panel panel-default'>
+  <div class="panel-heading">
+    <h1>Edit Hero</h1>
+  </div>
+  <div class='panel-body'>
+    <%= render 'form', hero: @hero %>
+  </div>
+</div>
 
 <%= link_to 'Show', @hero %> |
 <%= link_to 'Back', heros_path %>

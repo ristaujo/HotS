@@ -1,5 +1,19 @@
+
 <p id="notice"><%= notice %></p>
-<%= @hero.name %>
-<%= @hero.hero_class %>
+
+
 <%= link_to 'Edit', edit_hero_path(@hero) %> |
 <%= link_to 'Back', heros_path %>
+<div class='panel panel-default'>
+  <div class="panel-heading">
+    <h1>
+      <%= @hero.name %>
+      <small>class: <%= @hero.hero_class %></small>
+    </h1>
+  </div>
+  <div class='panel-body'>
+    <p>
+      <%= simple_format @hero.description %>
+    </p>
+  </div>
+</div>
