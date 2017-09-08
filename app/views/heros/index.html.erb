@@ -1,26 +1,44 @@
 <p id="notice"><%= notice %></p>
+<div class='panel panel-default'>
+  <div class="panel-heading">
+    <h1>
+      Heros
+      <%= link_to 'New Hero', new_hero_path, class: 'btn btn-sm btn-primary' %>
+    </h1>
+  </div>
+  <div class='panel-body'>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th colspan="1"></th>
+          <th>Hero Name</th>
+        </tr>
+      </thead>
 
-<h1>Heros</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @heros.each do |hero| %>
-      <tr>
-        <td><%= hero.name %></td>
-        <td><%= link_to 'Show', hero %></td>
-        <td><%= link_to 'Edit', edit_hero_path(hero) %></td>
-        <td><%= link_to 'Destroy', hero, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Hero', new_hero_path %>
+      <tbody>
+        <% @heros.each do |hero| %>
+          <tr>
+            <td class='col-sm-2'>
+              <div class='col-sm-1'>
+                <%= link_to hero do%>
+                  <i class='fa fa-eye'></i>
+                <% end %>  
+              </div>
+              <div class='col-sm-1'>
+                <%= link_to edit_hero_path(hero) do%>
+                  <i class='fa fa-pencil'></i>
+                <% end %>
+              </div>
+              <div class='col-sm-1'>
+                <%= link_to hero, method: :delete, data: { confirm: 'Are you sure?' } do%>
+                  <i class='fa fa-trash text-danger'></i>
+                <% end %>
+              </div>
+            </td>
+            <td><%= hero.name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
