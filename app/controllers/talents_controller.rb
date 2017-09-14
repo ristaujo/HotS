@@ -15,10 +15,12 @@ class TalentsController < ApplicationController
   # GET /talents/new
   def new
     @talent = Talent.new
+    @talent.hero_talents.build
   end
 
   # GET /talents/1/edit
   def edit
+    @talent.hero_talents.build
   end
 
   # POST /talents
@@ -69,6 +71,7 @@ class TalentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def talent_params
-      params.require(:talent).permit(:name, :level, :description, :hero_id)
+      params.require(:talent).permit(:name, :level, :description,
+                                      hero_talents_attributes: [:hero_id])
     end
 end
