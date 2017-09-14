@@ -11,12 +11,17 @@
       <thead>
         <tr>
           <th colspan="1"></th>
-          <th>Build Name</th>
+          <th>Objective</th>
+          <th>Hero</th>
+          <th>Talents</th>
+          <th>Maps</th>
+          <th>Counters</th>
+          <th>Synergies</th>
         </tr>
       </thead>
 
       <tbody>
-        <% @builds.each do |map| %>
+        <% @builds.each do |build| %>
           <tr>
             <td class='col-sm-2'>
               <div class='col-sm-1'>
@@ -35,7 +40,12 @@
                 <% end %>
               </div>
             </td>
-            <td><%= build.name %></td>
+            <td><%= build.objective %></td>
+            <td><%= build.hero.try(:name) %></td>
+            <td><%= build.talents.map(&:name).join(', ') %></td>
+            <td><%= build.maps.map(&:name).join(', ') %></td>
+            <td><%= build.counter_heros.map(&:name).join(', ') %></td>
+            <td><%= build.synergy_heros.map(&:name).join(', ') %></td>
           </tr>
         <% end %>
       </tbody>

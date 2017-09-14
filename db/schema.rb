@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170914173915) do
+ActiveRecord::Schema.define(version: 20170914200155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "build_heros", force: :cascade do |t|
+    t.bigint "build_id"
+    t.bigint "hero_id"
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["build_id"], name: "index_build_heros_on_build_id"
+    t.index ["hero_id"], name: "index_build_heros_on_hero_id"
+  end
 
   create_table "build_maps", force: :cascade do |t|
     t.bigint "map_id"
@@ -26,8 +36,13 @@ ActiveRecord::Schema.define(version: 20170914173915) do
   end
 
   create_table "build_talents", force: :cascade do |t|
+    t.bigint "talent_id"
+    t.bigint "build_id"
+    t.text "info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["build_id"], name: "index_build_talents_on_build_id"
+    t.index ["talent_id"], name: "index_build_talents_on_talent_id"
   end
 
   create_table "builds", force: :cascade do |t|

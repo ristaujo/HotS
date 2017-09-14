@@ -15,6 +15,11 @@ class BuildsController < ApplicationController
   # GET /builds/new
   def new
     @build = Build.new
+    @build.build_talents.build
+    @build.build_maps.build
+    @build.counters.build
+    @build.synergies.build
+    
   end
 
   # GET /builds/1/edit
@@ -69,6 +74,10 @@ class BuildsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def build_params
-      params.require(:build).permit(:hero_id, :talent_id, :map_id, :user_id)
+      params.require(:build).permit(:hero_id, :objective,
+                                      build_talents_attributes: [:id, :talent_id],
+                                      build_maps_attributes: [:id, :map_id],
+                                      counters_attributes: [:id, :hero_id, :type],
+                                      synergies_attributes: [:id, :hero_id, :type])
     end
 end

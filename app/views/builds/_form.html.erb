@@ -12,14 +12,42 @@
   <% end %>
 
     <div class="form-group">
-    <%= form.label :hero_link %>
-    <%= form.collection_select(:hero_id, Hero.all, :id, :name ) %>
-  </div>
+      <%= form.label :hero_link %>
+      <%= form.collection_select(:hero_id, Hero.all, :id, :name ) %>
+    </div>
+
+    <%= form.fields_for :build_talents do |build_talent| %>
+      <div class="form-group">
+        <%= build_talent.label :talent_link %>
+        <%= build_talent.collection_select(:talent_id, Talent.all, :id, :name ) %>
+      </div>
+    <% end %>
+
+    <%= form.fields_for :build_maps do |build_map| %>
+      <div class="form-group">
+       <%= build_map.label :map_link %>
+        <%= build_map.collection_select(:map_id, Map.all, :id, :name ) %>
+      </div>
+    <% end %>
+
+    <%= form.fields_for :counters do |build_hero| %>
+      <div class="form-group">
+        <%= build_hero.label 'Counter' %>
+        <%= build_hero.collection_select(:hero_id, Hero.all, :id, :name ) %>
+      </div>
+    <% end %>
+    <%= form.fields_for :synergies do |build_hero| %>
+      <div class="form-group">
+        <%= build_hero.label 'Synergy' %>
+        <%= build_hero.collection_select(:hero_id, Hero.all, :id, :name ) %>
+      </div>
+    <% end %>
+
 
     <div class="form-group">
-    <%= form.label :description %>
-    <%= form.text_area :description, class: 'form-control', placeholder: 'Description' %>
-  </div>
+      <%= form.label :objective %>
+      <%= form.text_area :objective, class: 'form-control', placeholder: 'Description' %>
+    </div>
 
   <div class="actions">
     <%= form.submit %>
