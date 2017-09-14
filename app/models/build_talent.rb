@@ -1,0 +1,2 @@
+class BuildTalent < ApplicationRecord
+end

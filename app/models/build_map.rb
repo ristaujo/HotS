@@ -1,0 +1,2 @@
+class BuildMap < ApplicationRecord
+end
