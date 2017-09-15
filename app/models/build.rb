@@ -12,9 +12,4 @@ class Build < ApplicationRecord
   has_many :synergy_heros, through: :synergies, source: :hero
 
   belongs_to :hero
-
-  accepts_nested_attributes_for :build_talents
-  accepts_nested_attributes_for :build_maps
-  accepts_nested_attributes_for :counters
-  accepts_nested_attributes_for :synergies
 end

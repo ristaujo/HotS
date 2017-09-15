@@ -4,6 +4,5 @@ class Talent < ApplicationRecord
 
   has_many :build_talents, inverse_of: :talent
   has_many :builds, through: :build_talents
-  
-  accepts_nested_attributes_for :hero_talents, allow_destroy: true
+
 end
