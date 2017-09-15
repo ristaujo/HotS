@@ -15,17 +15,19 @@ class TalentsController < ApplicationController
   # GET /talents/new
   def new
     @talent = Talent.new
+    @heros = Hero.all
     @talent.hero_talents.build
   end
 
   # GET /talents/1/edit
   def edit
-    @talent.hero_talents.build
+    @heros = Hero.all
   end
 
   # POST /talents
   # POST /talents.json
   def create
+    params[:talent][:hero_talents_attributes].reject! {|k,v| p v["hero_id"] == '0'}
     @talent = Talent.new(talent_params)
 
     respond_to do |format|
@@ -72,6 +74,6 @@ class TalentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def talent_params
       params.require(:talent).permit(:name, :level, :description,
-                                      hero_talents_attributes: [:hero_id])
+                                      hero_talents_attributes: [:id, :hero_id])
     end
 end

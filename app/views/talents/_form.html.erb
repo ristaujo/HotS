@@ -26,14 +26,16 @@
     <%= form.label :description %>
     <%= form.text_area :description, class: 'form-control', placeholder: 'Description' %>
   </div>
-  
-  <%= form.fields_for :hero_talents do |hero_talent| %>
 
-    <div class="form-group">
-      <%= hero_talent.label :hero_link %>
-      <%= hero_talent.collection_select(:hero_id, Hero.all, :id, :name ) %>
-    </div>
-
+  <% @heros.each do |hero| %>
+    <br>
+    <%= form.fields_for :hero_talents do |fm| %>
+      <%= fm.hidden_field :hero_id, value: hero.id %>
+      <!-- Create a checkbox to add the milestone_id to the project -->
+      <%= fm.label hero.name %>
+      <%= fm.check_box :hero_id, {}, hero.id %>
+      <br>
+    <% end %>
   <% end %>
 
 
