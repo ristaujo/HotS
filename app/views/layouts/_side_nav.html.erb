@@ -1,28 +1,37 @@
-<div class="col-sm-3 col-md-2 sidebar">
-  <ul class="nav nav-sidebar text-center">
-    <li>
-      <%= link_to heros_path do%>
-        <i class='fa fa-superpowers'></i>
-        Heros
-      <% end %>
-    </li>
-    <li>
-      <%= link_to talents_path do%>
-        <i class='fa fa-fire'></i>
-         Talents
-      <% end %>
-    </li>
-    <li>
-      <%= link_to maps_path do%>
-        <i class='fa fa-map'></i>
-        Maps
-      <% end %>
-    </li>
-    <li>
-      <%= link_to builds_path do%>
-        <i class='fa fa-building'></i>
-        Builds
-      <% end %>
-    </li>
-  </ul>
+<div class="navbar-default sidebar" role="navigation">
+  <div class="sidebar-nav navbar-collapse slimscrollsidebar">
+    <ul class="nav" id="side-menu">
+      <li style="padding: 10px 0 0;">
+        <a href="index.html" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i><span class="hide-menu">Dashboard</span></a>
+      </li>
+      <li>
+        <%= link_to builds_path, class: 'active' do%>
+          <i class='fa fa-columns fa-fw'></i>
+          <span class="hide-menu">Builds</span>
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to heros_path, class: '' do%>
+          <i class='fa fa-superpowers fa-fw'></i>
+          <span class="hide-menu">Heros</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to talents_path, class: '' do%>
+          <i class='fa fa-superpowers fa-fw'></i>
+          <span class="hide-menu">Talents</span>
+        <% end %>
+      </li> 
+      <li>
+        <%= link_to maps_path, class: '' do%>
+          <i class='fa fa-superpowers fa-fw'></i>
+          <span class="hide-menu">Maps</span>
+        <% end %>
+      </li>                  
+    </ul>
+    <div class="center p-20">
+      <span class="hide-menu"><a href="http://wrappixel.com/templates/pixeladmin/" target="_blank" class="btn btn-danger btn-block  btn-rounded waves-effect waves-light">Upgrade to Pro</a></span>
+    </div>
+  </div>
 </div>

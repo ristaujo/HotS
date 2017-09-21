@@ -1,10 +1,5 @@
-<div class='panel panel-default'>
-  <div class="panel-heading">
-    <h1>New Map</h1>
-  </div>
-  <div class='panel-body'>
-    <%= render 'form', map: @map %>
-  </div>
-</div>
+<%= render "layouts/page_title" %>
+
+<%= render 'form', map: @map %>
 
 <%= link_to 'Back', maps_path %>

@@ -1,41 +1,20 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">HoS Architect</a>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Dashboard</a></li>
-        <li><a href="#">Profile</a></li>
-        <% if user_signed_in? %>
+<nav class="navbar navbar-default navbar-static-top m-b-0">
+  <div class="navbar-header"> <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="fa fa-bars"></i></a>
+      <div class="top-left-part"><a class="logo" href="index.html"><b><img src="../plugins/images/pixeladmin-logo.png" alt="home" /></b><span class="hidden-xs"><img src="../plugins/images/pixeladmin-text.png" alt="home" /></span></a></div>
+      <ul class="nav navbar-top-links navbar-left m-l-20 hidden-xs">
           <li>
-          
-            <%= link_to current_user.email, edit_user_registration_path %>
+              <form role="search" class="app-search hidden-xs">
+                  <input type="text" placeholder="Search..." class="form-control"> <a href=""><i class="fa fa-search"></i></a>
+              </form>
           </li>
-          <li>
-            <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-          </li>
-        <% else %>
-          <li>
-            <%= link_to "Sign up", new_user_registration_path %>
-          </li>
-          <li>
-            <%= link_to "Login", new_user_session_path %>
-          </li>
-        <% end %>
-        <form class="navbar-form navbar-left" role="search">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-          </div>
-          <button type="submit" class="btn btn-default">Submit</button>
-        </form>
       </ul>
-    </div>
+      <ul class="nav navbar-top-links navbar-right pull-right">
+          <li>
+              <a class="profile-pic" href="#"> <img src="../plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">Steave</b> </a>
+          </li>
+      </ul>
   </div>
+  <!-- /.navbar-header -->
+  <!-- /.navbar-top-links -->
+  <!-- /.navbar-static-side -->
 </nav>
