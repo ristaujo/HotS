@@ -1,5 +1,18 @@
 <p id="notice"><%= notice %></p>
-<%= @talent.name %>
+
 
 <%= link_to 'Edit', edit_talent_path(@talent) %> |
 <%= link_to 'Back', talents_path %>
+<div class='panel panel-default'>
+  <div class="panel-heading">
+    <h1>
+      <%= @talent.name %>
+    </h1>
+  </div>
+  <div class='panel-body'>
+    <p>
+      <%= simple_format @talent.description %>
+    </p>
+    <%= image_tag @talent.image_url(:thumb) if @talent.image? %>
+  </div>
+</div>

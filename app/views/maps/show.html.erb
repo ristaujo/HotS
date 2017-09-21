@@ -2,3 +2,16 @@
 
 <%= link_to 'Edit', edit_map_path(@map) %> |
 <%= link_to 'Back', maps_path %>
+<div class='panel panel-default'>
+  <div class="panel-heading">
+    <h1>
+      <%= @map.name %>
+    </h1>
+  </div>
+  <div class='panel-body'>
+    <p>
+      <%= simple_format @map.description %>
+    </p>
+    <%= image_tag @map.image_url(:thumb) if @map.image? %>
+  </div>
+</div>

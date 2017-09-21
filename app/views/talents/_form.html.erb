@@ -1,41 +1,65 @@
 <div class='row'>
-  <div class="col-md-8 col-xs-12">
-    <div class="white-box">
-      <%= form_with(model: talent, local: true, class: 'form-horizontal form-material') do |form| %>   
-
-    <div class="form-group">
-      <%= form.label :name %>
-      <%= form.text_field :name, class: 'form-control', placeholder: 'Name' %>
-    </div>
-
-    <div class="form-group">
-      <%= form.label :image, class: 'col-sm-12' %>
-      <div class="col-sm-12">
-        <%= form.file_field :image %>
+  <%= form_with(model: talent, local: true, class: 'form-horizontal form-material') do |form| %>
+    <div class="col-md-4 col-xs-12">
+      <div class="white-box">
+        <div class="user-bg">
+          
+          <div class="overlay-box">
+            <div class="user-content">
+              <a href="javascript:void(0)">
+                <%= image_tag talent.image_url(:thumb), class: 'thumb-lg img-circle' if talent.image? %>
+              </a>
+              <h4 class="text-white"><%= talent.name %></h4>
+              <div class="text-center">
+                <div class="col-sm-8 col-sm-offset-2">
+                  <%= form.file_field :image %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+    <div class="col-md-8 col-xs-12">
+      <div class="white-box">
 
-    <div class="form-group">
-      <%= form.label :level %>
-      <%= form.text_field :level, class: 'form-control', placeholder: 'Level' %>
-    </div>
+      <div class="form-group">
+        <%= form.label :name %>
+        <%= form.text_field :name, class: 'form-control', placeholder: 'Name' %>
+      </div>
 
-    <div class="form-group">
-      <%= form.label :description %>
-      <%= form.text_area :description, class: 'form-control', placeholder: 'Description' %>
-    </div>
+      <div class="form-group">
+        <%= form.label :level %>
+        <%= form.text_field :level, class: 'form-control', placeholder: 'Level' %>
+      </div>
 
-    
+      <div class="form-group">
+        <%= form.label :description %>
+        <%= form.text_area :description, class: 'form-control', placeholder: 'Description' %>
+      </div>
 
-    <div class="form-group">
-      <%= form.label :hero_link, class: 'col-sm-12' %>
-       <div class="col-sm-12">
-        <%= form.collection_select(:hero_id, Hero.all, :id, :name, {}, { class: 'form-control form-control-line' }) %>
-       </div>
-    </div>
+      
+      <div class="form-group">
+        <%= form.label :hero_link, class: 'col-sm-12' %>
+        <div class="col-sm-12">
+          <%= form.collection_check_boxes :hero_ids, Hero.all, :id, :name do |b| %>
+            <div class="row" style='margin:0;'>
+              <%= b.label(class: "check_box") do %>
+                <div style='width:2%;float:left;'>
+                  <%= b.check_box(class: "check_box") %>
+                </div>
+
+                <div class="col-xs-8" style='padding:0;'>
+                  <%= b.object.name %>
+                </div>       
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
       <%= form.submit 'Submit', class: 'btn btn-default' %>
 
-      <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>
