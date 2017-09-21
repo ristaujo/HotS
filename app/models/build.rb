@@ -12,4 +12,6 @@ class Build < ApplicationRecord
   has_many :synergy_heros, through: :synergies, source: :hero
 
   belongs_to :hero
+
+  mount_uploader :image, ImageUploader
 end

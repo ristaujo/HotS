@@ -69,7 +69,7 @@ class HerosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hero_params
-      params.require(:hero).permit(:name, :hero_class, :description)            
+      params.require(:hero).permit(:name, :hero_class, :description, :image)            
                                                                     
     end
 end

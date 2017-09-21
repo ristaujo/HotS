@@ -8,6 +8,8 @@ end
 gem 'devise'
 gem "font-awesome-rails"
 gem 'twitter-bootstrap-rails'
+gem 'carrierwave'
+gem 'mini_magick'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

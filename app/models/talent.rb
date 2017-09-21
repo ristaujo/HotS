@@ -5,4 +5,5 @@ class Talent < ApplicationRecord
   has_many :build_talents, inverse_of: :talent
   has_many :builds, through: :build_talents
 
+  mount_uploader :image, ImageUploader
 end

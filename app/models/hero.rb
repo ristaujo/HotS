@@ -3,4 +3,6 @@ class Hero < ApplicationRecord
   has_many :talents, through: :hero_talents
 
   has_many :builds, inverse_of: :hero
+
+  mount_uploader :image, ImageUploader
 end
