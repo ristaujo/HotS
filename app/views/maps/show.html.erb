@@ -1,17 +1,15 @@
-<p id="notice"><%= notice %></p>
+<%= render "layouts/page_title" %>
 
-<%= link_to 'Edit', edit_map_path(@map) %> |
-<%= link_to 'Back', maps_path %>
-<div class='panel panel-default'>
-  <div class="panel-heading">
-    <h1>
-      <%= @map.name %>
-    </h1>
-  </div>
-  <div class='panel-body'>
-    <p>
-      <%= simple_format @map.description %>
-    </p>
-    <%= image_tag @map.image_url(:thumb) if @map.image? %>
+<div class='row'>
+  <div class="col-md-8 col-md-offset-2 col-xs-12">
+    <div class="white-box">
+      <h2><%= @map.name %></h2>
+      <%= image_tag @map.image_url(:thumb), width: '100%' if @map.image? %>
+      <div class="user-btm-box">
+        <div class="col-sm-12 text-center">
+          <p class="text-purple"><%= simple_format @map.description %></p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,4 +1,99 @@
 <%= render "layouts/page_title" %>
 
-<%= link_to 'Edit', edit_build_path(@build) %> |
-<%= link_to 'Back', builds_path %>
+<div class='row'>
+  <div class="col-md-4 col-xs-12">
+    <div class="white-box">
+      <div class="user-bg">
+        <div class="overlay-box">
+          <div class="user-content">
+            <a href="javascript:void(0)">
+              <%= image_tag @build.hero.image_url(:thumb), class: 'thumb-lg img-circle' if @build.hero.image? %>
+            </a>
+            <h4 class="text-white">
+              <%= @build.hero.name %>
+              <small>Class: <%= @build.hero.hero_class %></small>    
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div class="user-btm-box">
+        <div class="col-sm-12 text-center">
+          <p class="text-purple">Objective: <%= simple_format @build.objective %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8 col-xs-12">
+    <div class="col-xs-12">
+      <div class="white-box">
+        <div class="row">
+          <h3>Talents:</h3>
+          <% @build.talents.each do |talent| %>
+            <div class="col-sm-6 col-md-4">
+              <div class="thumbnail">
+                <%= image_tag talent.image_url(:thumb), class: 'thumb-lg img-circle' if talent.image? %>
+                <div class="caption">
+                  <h4 class='text-center'><%= link_to talent.name, talent %></h4>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-12">
+      <div class="white-box">
+        <div class="row">
+          <h3>Maps:</h3>
+          <% @build.maps.each do |map| %>
+            <div class="col-sm-6 col-md-4">
+              <div class="thumbnail">
+                <%= image_tag map.image_url(:thumb), class: 'thumb-lg img-circle' if map.image? %>
+                <div class="caption">
+                  <h4 class='text-center'><%= link_to map.name, map %></h4>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-12">
+      <div class="white-box">
+        <div class="row">
+          <h3>Synergies:</h3>
+          <% @build.synergy_heros.each do |synergy| %>
+            <div class="col-sm-6 col-md-4">
+              <div class="thumbnail">
+                <%= image_tag synergy.image_url(:thumb), class: 'thumb-lg img-circle' if synergy.image? %>
+                <div class="caption">
+                  <h4 class='text-center'><%= link_to synergy.name, synergy %></h4>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-12">
+      <div class="white-box">
+        <div class="row">
+          <h3>Counters:</h3>
+          <% @build.counter_heros.each do |counter| %>
+            <div class="col-sm-6 col-md-4">
+              <div class="thumbnail">
+                <%= image_tag counter.image_url(:thumb), class: 'thumb-lg img-circle' if counter.image? %>
+                <div class="caption">
+                  <h4 class='text-center'><%= link_to counter.name, counter %></h4>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

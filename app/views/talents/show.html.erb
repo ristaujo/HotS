@@ -1,18 +1,42 @@
-<p id="notice"><%= notice %></p>
+<%= render "layouts/page_title" %>
 
-
-<%= link_to 'Edit', edit_talent_path(@talent) %> |
-<%= link_to 'Back', talents_path %>
-<div class='panel panel-default'>
-  <div class="panel-heading">
-    <h1>
-      <%= @talent.name %>
-    </h1>
+<div class='row'>
+  <div class="col-md-4 col-xs-12">
+    <div class="white-box">
+      <div class="user-bg">
+        <div class="overlay-box">
+          <div class="user-content">
+            <a href="javascript:void(0)">
+              <%= image_tag @talent.image_url(:thumb), class: 'thumb-lg img-circle' if @talent.image? %>
+            </a>
+            <h4 class="text-white">
+              <%= @talent.name %> 
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div class="user-btm-box">
+        <div class="col-sm-12 text-center">
+          <p class="text-purple"><%= simple_format @talent.description %></p>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class='panel-body'>
-    <p>
-      <%= simple_format @talent.description %>
-    </p>
-    <%= image_tag @talent.image_url(:thumb) if @talent.image? %>
+  <div class="col-md-8 col-xs-12">
+    <div class="white-box">
+      <div class="row">
+        <h3>Heros:</h3>
+        <% @talent.heros.each do |hero| %>
+          <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+              <%= image_tag hero.image_url(:thumb), class: 'thumb-lg img-circle' if hero.image? %>
+              <div class="caption">
+                <h4 class='text-center'><%= hero.name %></h4>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
