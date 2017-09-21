@@ -1,0 +1,59 @@
+<%= render "layouts/page_title" %>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="white-box">
+    <h3 class="box-title"> <%= controller.controller_name.titleize %>
+      <div class="col-md-2 col-sm-4 col-xs-12 pull-right text-right">
+        <%= link_to 'New Build', new_build_path, class: 'btn btn-sm btn-primary' %> 
+      </div>
+    </h3>
+    <div class="table-responsive">
+      <table class="table">
+          <thead>
+            <tr>
+              <th>Hero</th>
+              <th>Talents</th>
+              <th>Maps</th>
+              <th>Counters</th>
+              <th>Synergies</th>
+              <th>Objective</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @builds.each do |build| %>
+              <tr>
+                <td class='col-sm-2'>
+                  <div class='col-sm-1'>
+                    <%= link_to build do%>
+                      <i class='fa fa-eye'></i>
+                    <% end %>  
+                  </div>
+                  <div class='col-sm-1'>
+                    <%= link_to edit_build_path(build) do%>
+                      <i class='fa fa-pencil'></i>
+                    <% end %>
+                  </div>
+                  <div class='col-sm-1'>
+                    <%= link_to build, method: :delete, data: { confirm: 'Are you sure?' } do%>
+                      <i class='fa fa-trash text-danger'></i>
+                    <% end %>
+                  </div>
+                  <div class='col-sm-1'>
+                    <%= build.hero.try(:name) %>    
+                  </div>
+                </td>
+                <td><%= build.talents.map(&:name).join(', ') %></td>
+                <td><%= build.maps.map(&:name).join(', ') %></td>
+                <td><%= build.counter_heros.map(&:name).join(', ') %></td>
+                <td><%= build.synergy_heros.map(&:name).join(', ') %></td>
+                <td><%= build.objective %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
