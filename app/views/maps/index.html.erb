@@ -1,46 +1,20 @@
 <%= render "layouts/page_title" %>
-
-<div class="row">
-  <div class="col-sm-12">
-    <div class="white-box">
-    <h3 class="box-title"> <%= controller.controller_name.titleize %>
-      <div class="col-md-2 col-sm-4 col-xs-12 pull-right text-right">
-        <%= link_to 'New Map', new_map_path, class: 'btn btn-sm btn-primary' %> 
-      </div>
-    </h3>
-    <div class="table-responsive">
-      <table class="table">
-          <thead>
-            <tr>
-              <th colspan="1"></th>            
-              <th>Map Name</th>
-            </tr>
-          </thead>
-
-      <tbody>
-        <% @maps.each do |map| %>
-          <tr>
-            <td class='col-sm-2'>
-              <div class='col-sm-1'>
-                <%= link_to map do%>
-                  <i class='fa fa-eye'></i>
-                <% end %>  
-              </div>
-              <div class='col-sm-1'>
-                <%= link_to edit_map_path(map) do%>
-                  <i class='fa fa-pencil'></i>
-                <% end %>
-              </div>
-              <div class='col-sm-1'>
-                <%= link_to map, method: :delete, data: { confirm: 'Are you sure?' } do%>
-                  <i class='fa fa-trash text-danger'></i>
-                <% end %>
-              </div>
-            </td>
-            <td><%= map.name %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+<div class='row'>
+  <div class='col-xs-12 text-right'>
+    <%= link_to 'New Map', new_map_path, class: 'btn btn-sm btn-primary' %> 
   </div>
-</div>
+  <% @maps.each do |map| %>
+    <div class="col-sm-3">
+      <div class="thumbnail">
+        <%= image_tag map.image_url(:thumb), class: 'thumb-lg img-circle' if map.image? %>
+        <div class="caption text-center">
+          <h4 class='text-center'><%= map.name %></h4>
+          <p>
+            <%= link_to 'View', map, class: 'btn btn-sm btn-primary' %>
+            <%= link_to 'Edit', edit_map_path(map), class: 'btn btn-sm btn-default' %>
+          </p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div> 

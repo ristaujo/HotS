@@ -74,7 +74,7 @@ class BuildsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def build_params
-      params.require(:build).permit(:hero_id, :objective,
+      params.require(:build).permit(:hero_id, :objective, :image,
                                       talent_ids: [],
                                       map_ids: [],
                                       counter_hero_ids: [],
