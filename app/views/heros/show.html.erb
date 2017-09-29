@@ -28,7 +28,7 @@
       <div class="row">
         <h3>Talents:</h3>
         <% @hero.talents.each do |talent| %>
-          <div class="col-sm-3">
+          <div class="col-sm-6 col-md-4">
             <div class="thumbnail">
               <%= image_tag talent.image_url(:thumb), class: 'thumb-lg img-circle' if talent.image? %>
               <div class="caption">
